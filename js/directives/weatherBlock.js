@@ -2,7 +2,9 @@ app.directive('weatherBlock', function() {
 	return {
 		restrict: 'E',
 		scope: {
-			info: '='
+			httpdata: '=',
+			convertDate: '&',
+			convertTemp: '&'
 		},
 		templateUrl: 'js/directives/weatherBlock.html'
 	};

@@ -1,11 +1,7 @@
-app.factory('weatherData', ['$http', function($http) {
-	let dataPromise = $http.get('./data/data.json')
-		.then
-			(function(response) {
-    			return response.data;
-  			});
+app.service('weatherData', ['$http', function($http) {
+	this.api = 'http://api.openweathermap.org/data/2.5/weather?APPID=f014a10f31104549ece104488875b27b';
 
-  	return {
-  		getData: dataPromise
-  	};
+	this.apiFiveDay = 'http://api.openweathermap.org/data/2.5/forecast?APPID=f014a10f31104549ece104488875b27b';
+
+	this.city = 'Moscow';
 }]);

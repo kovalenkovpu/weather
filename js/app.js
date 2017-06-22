@@ -1,6 +1,6 @@
-let app = angular.module('weatherApp', ['ngRoute']);
+let app = angular.module('weatherApp', ['ngRoute', 'ngResource']);
 
-app.config(function ($routeProvider) {
+app.config(function($routeProvider) {
 	$routeProvider
 	.when('/', {
 		controller: 'weatherController',

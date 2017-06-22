@@ -1,15 +1,21 @@
-app.controller('cityController', ['$scope', '$routeParams', 'weatherData', function($scope, $routeParams, weatherData) {
-	$scope.cityId = $routeParams.id;
-	$scope.cityData = {};
+app.controller('cityController', ['$scope', '$routeParams', 'weatherData', '$resource', function($scope, $routeParams, weatherData, $resource) {
+	
+	let api = weatherData.apiFiveDay,
+		city = weatherData.city;
 
-	weatherData.getData.then(function(data) {
-		for (let i = 0; i < data.length; i++) {
-			for (let key in data[i]) {
-				if (data[i][key] == $scope.cityId) {
-					$scope.cityData = data[i];
-					break;
-				}
-			}
-		}
-	});
+	//$scope.cityId = $routeParams.id;
+
+	$scope.cityData = null;
+
+	$scope.resourceAPI = $resource(api, { get: {method: "JSONP"}});
+
+	$scope.cityData = $scope.resourceAPI.get({ q: city});
+
+	$scope.convertTemp = function(temp) {
+		return (temp - 273.15).toFixed(2);
+	};
+
+	$scope.convertDate = function(date) {
+		return new Date(date * 1000);
+	};
 }]);

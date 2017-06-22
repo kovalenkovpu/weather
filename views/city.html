@@ -3,10 +3,10 @@
 		<div class="col-md-offset-3 col-md-6">
 			<div class="row">
 				<div class="col-md-6">
-					<p class="label label-success">{{cityId}}</p>
-					<p>Сегодня: {{cityData.forecast[0].date}}</p>
-					<span>Температура: {{cityData.forecast[0].temperature}}, </span>
-					<span>{{cityData.forecast[0].weather}}</span>
+					<p class="label label-success">{{cityData.city.name}}</p>
+					<p>Сегодня: {{ convertDate(cityData.list[0].dt) | date: 'MMM d, y'}}</p>
+					<span>Температура: {{convertTemp(cityData.list[0].main.temp)}} &deg;C, </span>
+					<span>Погода: {{cityData.list[0].weather[0].main}}, {{cityData.list[0].weather[0].description}}</span>
 				</div>
 			</div>
 			<hr>
@@ -14,10 +14,10 @@
 				<div class="col-md-12" role="alert">Прогноз на 6 дней:</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4 alert alert-info city-weather" ng-if="$index" ng-repeat="day in cityData.forecast">
-					<p>{{day.date}}</p>
-					<p>{{day.temperature}}</p>
-					<p>{{day.weather}}</p>
+				<div class="col-md-4 alert alert-info city-weather" ng-if="$index" ng-repeat="day in cityData.list">
+					<p>Дата: {{ convertDate(day.dt) | date: 'medium'}}</p>
+					<p>Температура: {{convertTemp(day.main.temp)}} &deg;C</p>
+					<p>Погода: {{day.weather[0].main}}</p>
 				</div>
 			</div>
 			<hr>

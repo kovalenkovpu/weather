@@ -2,9 +2,9 @@
 	<div class="row">
 		<div class="col-md-offset-3 col-md-6">
 			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Search for the city..." ng-model="query">
+				<input type="text" class="form-control" placeholder="Введите название города на английском" ng-model="city">
 				<span class="input-group-btn">
-					<button class="btn btn-default" type="button">Искать!</button>
+					<button class="btn btn-default" type="button" ng-click="getCurrentForecast()">Искать!</button>
 				</span>
 			</div>
 		</div>
@@ -12,16 +12,5 @@
 </div>
 
 <div class="container">
-	<div class="row">
-		<div class="col-md-offset-3 col-md-6"><h2>Результаты поиска:</h2></div>
-	</div>
-</div>
-<div class="container">
-	<weather-block ng-repeat="forecast in data | filter:{city: query} as results" info="forecast"></weather-block>
-</div>
-
-<div class="container">
-	<div class="row">
-		<div class="col-md-offset-3 col-md-6" ng-if="results.length === 0"><h4>Совпадений не найдено.</h4></div>
-	</div>
+	<weather-block httpdata="httpData" ng-if="httpData" convert-date="convertDate(date)" convert-temp="convertTemp(tmp)"></weather-block>
 </div>

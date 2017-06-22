@@ -1,9 +1,15 @@
 <div class="row">
+	<div class="col-md-offset-3 col-md-6"><h2>Результаты поиска:</h2></div>
+</div>
+<div class="row">
 	<div class="col-md-offset-3 col-md-6 city">
-		<div class="col-md-4 alert alert-success"><strong>{{info.city}}</strong></div>
-		<div class="col-md-4 alert alert-success">{{info.forecast[0].date}}</div>
-		<div class="col-md-4 alert alert-success">{{info.forecast[0].temperature}}<br>{{info.forecast[0].weather}}</div>
-		<div class="col-md-12"><a href="#!/city/{{info.city}}">Узнать проноз на 6 дней</a></div>
+		<div class="col-md-4 alert alert-success">
+			<strong>{{httpdata.name}}</strong>
+			<br>{{ convertDate({date: httpdata.dt}) | date: 'MMM d, y'}}
+		</div>
+		<div class="col-md-4 alert alert-success">Влажность: {{httpdata.main.humidity}}%</div>
+		<div class="col-md-4 alert alert-success">Температура: {{ convertTemp({tmp: httpdata.main.temp}) }} &deg;C<br>Осадки: {{httpdata.weather[0].main}}</div>
+		<div class="col-md-12"><a href="#!/city/{{httpdata.name}}">Узнать подробный прогноз (5 дней каждые 3 часа)</a></div>
 	</div>
 
 </div>
