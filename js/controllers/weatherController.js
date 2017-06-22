@@ -1,4 +1,4 @@
-app.controller('weatherController', ['$scope', '$routeParams', 'weatherData', '$resource', function($scope, $routeParams, weatherData, $resource) {
+app.controller('weatherController', ['$scope', 'weatherData', '$resource', function($scope, weatherData, $resource) {
 	
 	let api = weatherData.api;
 	
