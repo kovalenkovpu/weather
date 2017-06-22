@@ -1,7 +1,7 @@
 app.service('weatherData', ['$http', function($http) {
-	this.api = 'http://api.openweathermap.org/data/2.5/weather?APPID=f014a10f31104549ece104488875b27b';
+	this.api = '//api.openweathermap.org/data/2.5/weather?APPID=f014a10f31104549ece104488875b27b';
 
-	this.apiFiveDay = 'http://api.openweathermap.org/data/2.5/forecast?APPID=f014a10f31104549ece104488875b27b';
+	this.apiFiveDay = '//api.openweathermap.org/data/2.5/forecast?APPID=f014a10f31104549ece104488875b27b';
 
 	this.city = 'Moscow';
 }]);
