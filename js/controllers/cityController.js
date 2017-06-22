@@ -1,4 +1,4 @@
-app.controller('cityController', ['$scope', '$routeParams', 'weatherData', '$http', '$route', function($scope, $routeParams, weatherData, $http, $route) {
+app.controller('cityController', ['$scope', '$routeParams', 'weatherData', function($scope, $routeParams, weatherData) {
 	$scope.cityId = $routeParams.id;
 	$scope.cityData = {};
 
